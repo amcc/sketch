@@ -1,7 +1,11 @@
-# sketch
+# sketch.amcc.io
 
 A collection of daily sketches. Often using the p5js framework. These can also be found on the p5 editor here:  
 https://editor.p5js.org/amcc/collections/rdWLwr7tz
+
+## Use the code
+Feel free to use and share the code, the repo is here: https://github.com/amcc/sketch
+All links below go to individual projects, if you use the code say hi on @alistairmcclymont on Instagram / Threads, @mcclymont on Twitter / X, or via my website at https://amcc.io
 
 [0008.0 - mediapipe handpose with variable typography](0008.0)  
 [0007.0 - mediapipe handpose with variable typography](0007.0)  
