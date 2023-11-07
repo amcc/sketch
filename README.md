@@ -7,6 +7,7 @@ Feel free to use and share the code, the repo is here: [https://github.com/amcc/
 
 All links below go to individual projects, if you use the code say hi on [@alistairmcclymont on Instagram](https://www.instagram.com/alistairmcclymont), [@alistairmcclymont on Threads](https://www.threads.net/@alistairmcclymont), [@mcclymont on Twitter / X](https://twitter.com/mcclymont), or via my website at https://amcc.io
 
+## Sketches
 [0008 - mediapipe handpose with variable typography](0008.0)  
 [0007 - mediapipe handpose with variable typography](0007.0)  
 [0006 - mediapipe handpose WEBGL 3D with webcam texture](0006.0)  
