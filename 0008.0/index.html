@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,CASL,CRSV,MONO@-15..0,300..1000,0..1,0..1,0..1&display=swap"
+      rel="stylesheet"
+    />
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/p5.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+  <script type="module" src="mediaPipe.js"></script>
+  </head>
+  <body>
+    <main>
+      <p class="variable">typo</p>
+      <div class="box">
+         <p class="tweak">indecision</p>
+      </div>
+     
+      <div class="sliders">
+      <label><input class="weight" type="range" min="300" max="1000" step="1" value="0" />weight</label>
+    <label><input class="slant" type="range" min="-15" max="0" step="1" value="0" />slant</label>
+    <label><input class="crsv" type="range" min="0" max="1" step="0.1" value="0" />crsv</label>
+    <label><input class="mono" type="range" min="0" max="1" step="0.01" value="0" />mono</label>
+    <label><input class="casl" type="range" min="0" max="1" step="0.01" value="0" />casl</label>
+        </div>
+    </main>
+    <script src="sketch.js"></script>
+  </body>
+</html>
