@@ -5,7 +5,7 @@ https://editor.p5js.org/amcc/collections/rdWLwr7tz
 
 ## Use the code
 Feel free to use and share the code, the repo is here: https://github.com/amcc/sketch
-All links below go to individual projects, if you use the code say hi on @alistairmcclymont on Instagram / Threads, @mcclymont on Twitter / X, or via my website at https://amcc.io
+All links below go to individual projects, if you use the code say hi on [@alistairmcclymont on Instagram](https://www.instagram.com/alistairmcclymont), [@alistairmcclymont on Threads](https://www.threads.net/@alistairmcclymont), [@mcclymont on Twitter / X](https://twitter.com/mcclymont), or via my website at https://amcc.io
 
 [0008.0 - mediapipe handpose with variable typography](0008.0)  
 [0007.0 - mediapipe handpose with variable typography](0007.0)  
