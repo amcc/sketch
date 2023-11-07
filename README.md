@@ -1,7 +1,6 @@
 # [sketch.amcc.io](https://sketch.amcc.io)
 
-A collection of daily sketches. Often using the p5js framework. These can also be found on the p5 editor here:  
-https://editor.p5js.org/amcc/collections/rdWLwr7tz
+A collection of daily sketches. Often using the p5js framework. A collection of these sketches can also be found on the [p5 editor here](https://editor.p5js.org/amcc/collections/rdWLwr7tz)
 
 ## Use the code
 Feel free to use and share the code, the repo is here: https://github.com/amcc/sketch
