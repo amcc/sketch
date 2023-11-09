@@ -10,6 +10,7 @@ All links below go to individual projects, if you use the code say hi on [@alist
 
 ## Sketches
 
+[0011 - webcam with rotating coloured squares](0011)
 [0010 - better webcam line mirror with lerp](0010)
 [0009 - webcam line mirror](0009)
 [0008 - mediapipe handpose with variable typography](0008.0)  
