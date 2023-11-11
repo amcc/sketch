@@ -1,0 +1,18 @@
+#################################################
+# LXDE-pi autostart script                      #
+#                                               #   
+# This file must be in the user's home e.g.     #
+# /home/pi/.config/lxsession/LXDE-pi/autostart. #
+#################################################
+
+## enable/disable screen saver
+#@xscreensaver -no-splash  # comment this line out to disable screensaver
+
+# Set the current xsession not to blank out the screensaver and then disables the screensaver altogether.
+@xset s noblank
+@xset s off
+# disables the display power management system
+@xset -dpms
+
+# Run the wanted app
+@bash /home/pi/kiosk.sh

@@ -10,6 +10,7 @@ All links below go to individual projects, if you use the code say hi on [@alist
 
 ## Sketches
 
+[0013.3 - simplex noise rgb grid](0013.3)
 [0012 - double pendulum synth](0012)
 [0011 - webcam with rotating coloured squares](0011)
 [0010 - better webcam line mirror with lerp](0010)
