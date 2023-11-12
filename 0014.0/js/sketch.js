@@ -5,6 +5,7 @@ let svgCount = 0;
 let width;
 let height;
 
+let waveHeight = 1;
 let zoff = 0;
 let circumference;
 let desiredLength;
@@ -44,14 +45,16 @@ window.onload = function () {
   greenGroup = new paper.Group();
   blueGroup = new paper.Group();
 
-  let gridSize = 50;
+  let gridSize = 30;
+  waveHeight = 1.2;
+  let colourSpread = 0.1;
 
   // if not doing animation then use this to draw
   paper.view.onFrame = function (event) {
     redGroup.removeChildren();
     blueGroup.removeChildren();
     greenGroup.removeChildren();
-    zoff += 0.03;
+    zoff += 0.01;
     let chunk = width / gridSize;
     colourGroup({
       parent: redGroup,
@@ -65,7 +68,7 @@ window.onload = function () {
     colourGroup({
       parent: blueGroup,
       gridSize: gridSize,
-      zoff: 0.2 + zoff,
+      zoff: colourSpread + zoff,
       colour: "blue",
       chunk: chunk,
       xShift: -chunk / 10,
@@ -74,7 +77,7 @@ window.onload = function () {
     colourGroup({
       parent: greenGroup,
       gridSize: gridSize,
-      zoff: 0.4 + zoff,
+      zoff: colourSpread * 2 + zoff,
       colour: "green",
       chunk: chunk,
       xShift: 0,
@@ -102,18 +105,18 @@ function colourGroup({
   xShift = 0,
   yShift = 0,
 }) {
-  for (let y = 0; y < gridSize; y++) {
-    for (let x = 0; x < gridSize; x++) {
-      let xoff = mapRange(x, 0, gridSize, 0, 1);
-      let yoff = mapRange(y, 0, gridSize, 0, 1);
+  for (let y = 0; y < gridSize + 6; y++) {
+    for (let x = 0; x < gridSize - gridSize / 3; x++) {
+      let xoff = mapRange(x * waveHeight, 0, gridSize, 0, 1);
+      let yoff = mapRange(y * waveHeight, 0, gridSize, 0, 1);
 
-      let r = mapRange(noise3D(xoff, yoff, zoff), -1, 1, 0, chunk / 1.2);
+      let r = mapRange(noise3D(xoff, yoff, zoff), -1, 1, 0, chunk / 2);
 
       new Path.Circle({
         center: [x * chunk + xShift, y * chunk + yShift],
-        radius: r * 1,
+        radius: r * 15.9,
         strokeColor: colour,
-        strokeWidth: 3,
+        strokeWidth: 1.4,
         // opacity: 0.6,
         blendMode: "screen",
         parent: parent,

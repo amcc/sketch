@@ -1,7 +1,6 @@
 import { createNoise3D } from "./simplex-noise.js";
 const noise3D = createNoise3D();
 
-let svgCount = 0;
 let width;
 let height;
 
@@ -44,14 +43,14 @@ window.onload = function () {
   greenGroup = new paper.Group();
   blueGroup = new paper.Group();
 
-  let gridSize = 50;
+  let gridSize = 30;
 
   // if not doing animation then use this to draw
   paper.view.onFrame = function (event) {
     redGroup.removeChildren();
     blueGroup.removeChildren();
     greenGroup.removeChildren();
-    zoff += 0.03;
+    zoff += 0.01;
     let chunk = width / gridSize;
     colourGroup({
       parent: redGroup,
@@ -65,7 +64,7 @@ window.onload = function () {
     colourGroup({
       parent: blueGroup,
       gridSize: gridSize,
-      zoff: 0.2 + zoff,
+      zoff: 0.1 + zoff,
       colour: "blue",
       chunk: chunk,
       xShift: -chunk / 10,
@@ -74,7 +73,7 @@ window.onload = function () {
     colourGroup({
       parent: greenGroup,
       gridSize: gridSize,
-      zoff: 0.4 + zoff,
+      zoff: 0.2 + zoff,
       colour: "green",
       chunk: chunk,
       xShift: 0,
@@ -82,15 +81,6 @@ window.onload = function () {
     });
   };
   // view.draw();
-
-  let t = new Tool();
-
-  //Listen for SHIFT-P to save content as SVG file.
-  t.onKeyUp = function (event) {
-    if (event.character == "s" || event.character == "S") {
-      print();
-    }
-  };
 };
 
 function colourGroup({
@@ -107,13 +97,13 @@ function colourGroup({
       let xoff = mapRange(x, 0, gridSize, 0, 1);
       let yoff = mapRange(y, 0, gridSize, 0, 1);
 
-      let r = mapRange(noise3D(xoff, yoff, zoff), -1, 1, 0, chunk / 1.2);
+      let r = mapRange(noise3D(xoff, yoff, zoff), -1, 1, 0, chunk / 2);
 
       new Path.Circle({
         center: [x * chunk + xShift, y * chunk + yShift],
-        radius: r * 1,
+        radius: r * 20.9,
         strokeColor: colour,
-        strokeWidth: 3,
+        strokeWidth: 1,
         // opacity: 0.6,
         blendMode: "screen",
         parent: parent,
@@ -143,27 +133,4 @@ function dist(x1, y1, x2, y2) {
   let dx = x2 - x1;
   let dy = y2 - y1;
   return Math.sqrt(dx * dx + dy * dy);
-}
-
-// make an svg
-function downloadAsSVG(fileName) {
-  if (!fileName) {
-    fileName = `yourimage-${svgCount}.svg`;
-  }
-  svgCount++;
-
-  var url =
-    "data:image/svg+xml;utf8," +
-    encodeURIComponent(
-      paper.project.exportSVG({ bounds: "view", asString: true })
-    );
-
-  var link = document.createElement("a");
-  link.download = fileName;
-  link.href = url;
-  link.click();
-}
-
-function print() {
-  downloadAsSVG(); // paper.project.layers.push(pendulumLayer); // now the redCircle is back
 }
