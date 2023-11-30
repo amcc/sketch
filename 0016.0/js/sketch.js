@@ -14,6 +14,7 @@ const wobbleInc = 0.0199;
 const phaseInc = 0.0011;
 const zoffInc = 0.0116;
 const circleNumber = 9;
+let svgCount = 0;
 
 let circleGroup;
 
@@ -69,7 +70,39 @@ window.onload = function () {
     height = paper.view.size.height;
     desiredLength = Math.min(width, height) * 2.2;
   };
+
+  let t = new Tool();
+
+  //Listen for SHIFT-P to save content as SVG file.
+  t.onKeyUp = function (event) {
+    if (event.character == "s" || event.character == "S") {
+      print();
+    }
+  };
 };
+
+// make an svg
+function downloadAsSVG(fileName) {
+  if (!fileName) {
+    fileName = `squares-${svgCount}.svg`;
+  }
+  svgCount++;
+
+  var url =
+    "data:image/svg+xml;utf8," +
+    encodeURIComponent(
+      paper.project.exportSVG({ bounds: "view", asString: true })
+    );
+
+  var link = document.createElement("a");
+  link.download = fileName;
+  link.href = url;
+  link.click();
+}
+
+function print() {
+  downloadAsSVG(); // paper.project.layers.push(pendulumLayer); // now the redCircle is back
+}
 
 const makeCircle = (width, height, wobble, close = false, color = "black") => {
   const gap = close ? 0 : stringGap;
