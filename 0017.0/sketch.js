@@ -130,9 +130,9 @@ function setCameraDimensions() {
   // the camera is landscape or portrait
 
   if (capture.width > capture.height) {
-    capture.size((capture.width / capture.height) * height, height);
-  } else {
     capture.size(width, (capture.height / capture.width) * width);
+  } else {
+    capture.size((capture.width / capture.height) * height, height);
   }
 }
 
