@@ -10,6 +10,7 @@ All links below go to individual projects, if you use the code say hi on [@alist
 
 ## Sketches
 
+[0018.0 - bezier with pose detection](0018.2)  
 [0017.0 - bezier with pose detection](0017.0)  
 [0015.0 - simplex noise rgb grid with wobbly circles](0015.0)  
 [0014.0 - simplex noise rgb grid with offset](0014.0)  
