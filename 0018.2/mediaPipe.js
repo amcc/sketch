@@ -1,8 +1,6 @@
 import {
-  PoseLandmarker,
   HandLandmarker,
   FilesetResolver,
-  DrawingUtils,
 } from "https://cdn.skypack.dev/@mediapipe/tasks-vision@0.10.0";
 
 let poseLandmarker;
@@ -12,8 +10,6 @@ let runningMode = "VIDEO";
 let lastVideoTime = -1;
 
 const mediaPipe = {
-  personLandmarks: [],
-  personWorldLandmarks: [],
   handednesses: [],
   handLandmarks: [],
   handWorldLandmarks: [],
@@ -26,14 +22,6 @@ const createPoseLandmarker = async () => {
   const vision = await FilesetResolver.forVisionTasks(
     "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.0/wasm"
   );
-  poseLandmarker = await PoseLandmarker.createFromOptions(vision, {
-    baseOptions: {
-      modelAssetPath: `https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task`,
-      delegate: "GPU",
-    },
-    runningMode: runningMode,
-    numPoses: 1,
-  });
 
   handLandmarker = await HandLandmarker.createFromOptions(vision, {
     baseOptions: {
@@ -50,18 +38,8 @@ const predictWebcam = async (video) => {
   // Now let's start detecting the stream.
   let startTimeMs = performance.now();
 
-  if (
-    video.elt &&
-    lastVideoTime !== video.elt.currentTime &&
-    poseLandmarker &&
-    handLandmarker
-  ) {
+  if (video.elt && lastVideoTime !== video.elt.currentTime && handLandmarker) {
     lastVideoTime = video.elt.currentTime;
-    // console.log(poseLandmarker)
-    poseLandmarker.detectForVideo(video.elt, startTimeMs, (result) => {
-      mediaPipe.personLandmarks = result.landmarks;
-      mediaPipe.personWorldLandmarks = result.worldLandmarks;
-    });
 
     let handResults = handLandmarker.detectForVideo(video.elt, startTimeMs);
     mediaPipe.handednesses = handResults.handednesses;
