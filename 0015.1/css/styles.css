@@ -1,0 +1,16 @@
+html {
+  /* cursor: none; */
+}
+html,
+body {
+  margin: 0;
+  overflow: hidden;
+  height: 100%;
+  /* background-color: black; */
+}
+
+/* Scale canvas with resize attribute to full size */
+canvas[resize] {
+  width: 100%;
+  height: 100%;
+}
