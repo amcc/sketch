@@ -10,8 +10,9 @@ All links below go to individual projects, if you use the code say hi on [@alist
 
 ## Sketches
 
-[0022.0 - p5js flow fields (using q5 for speed)](0022.0)  
-[0021.0 - paperjs metaballs #genuary2024 - 12](0021.0)  
+<!-- [0022.0 - p5js flow fields (using q5 for speed)](0022.0)
+[0021.0 - paperjs metaballs #genuary2024 - 12](0021.0)   -->
+
 [0020.0 - matterjs p5js particles #genuary2024 - 02](0020.0)  
 [0019.0 - matterjs p5js particles #genuary2024 - 01](0019.0)  
 [0018.0 - p5js bezier with hand detection](0018.2)  
