@@ -1,10 +1,9 @@
 let particles1 = [];
 let particles2 = [];
-const num = 10000;
 const scaleFactor = 0.001;
 let speed = 0.02;
 const weightMax = 20;
-const bgColor = [220,220,200]
+const bgColor = [220, 220, 200];
 
 let fps;
 
@@ -12,6 +11,8 @@ let x = 0;
 let y = 0;
 let grid = 50;
 let gap;
+
+const num = grid * grid;
 
 function setup() {
   // frameRate(30);
@@ -37,14 +38,14 @@ function setup() {
     if (x === grid && y < grid) y += 1;
     if (x >= grid) x = 0;
   }
-  background(220,220,200);
+  background(220, 220, 200);
   // blendMode(SCREEN)
 
-  // fps = document.getElementById("framerate");
+  fps = document.getElementById("framerate");
 }
 
 function draw() {
-  // fps.innerHTML = frameRate();
+  fps.innerHTML = frameRate();
   // clear()
   background(...bgColor, 30);
   for (let i = 0; i < num; i++) {
@@ -73,7 +74,7 @@ function draw() {
       p.strokeWeightScale = 0;
     }
   }
-  if(speed < 1.4) speed += 0.005
+  if (speed < 1.4) speed += 0.005;
 }
 
 function mousePressed(e) {
@@ -87,4 +88,8 @@ function onScreen(v) {
     v.y >= 0 - weightMax &&
     v.y <= height + weightMax
   );
+}
+
+function keyPressed() {
+  // saveCanvas("flowfield 0023.2", "png");
 }
