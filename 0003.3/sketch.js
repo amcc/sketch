@@ -108,6 +108,9 @@ function makeBezier({
 
   let p = landmarks[index];
   let l = lerpLandmarks[index];
+  // sometimes we don't have a person for a bit, if not then return
+  if (!l || !p) return;
+
   l[start].x = simpLerp(l[start].x, p[start].x, lerpRate);
   l[start].y = simpLerp(l[start].y, p[start].y, lerpRate);
   l[cont1].x = simpLerp(l[cont1].x, p[cont1].x, lerpRate);

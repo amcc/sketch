@@ -26,7 +26,7 @@ const colours = [
   [0, 255, 255],
   [255, 0, 255],
 ];
-const bgCol = [220, 220, 200]
+const bgCol = [220, 220, 200];
 let strokeBox = false;
 
 const fillColours = [colours, [bgCol]];
@@ -40,8 +40,8 @@ function setup() {
   for (let i = 0; i < boxNum; i++) {
     boxes.push(randomBox());
   }
-  
-  blendMode(MULTIPLY)
+
+  blendMode(MULTIPLY);
 }
 
 function draw() {
@@ -58,10 +58,10 @@ function draw() {
     let b = boxes[i];
     push();
     translate(b.x, b.y, b.z);
-    
+
     fill(...b.c, b.a);
-    if(strokeBox){
-      stroke(0)
+    if (strokeBox) {
+      stroke(0);
     } else {
       noStroke();
     }
@@ -117,9 +117,9 @@ function keyPressed() {
     }
   }
   if (key === "c") {
-    currentFillIndex = currentFillIndex < fillColours.length-1? 
-      currentFillIndex + 1 : 0
-    console.log(currentFillIndex)
+    currentFillIndex =
+      currentFillIndex < fillColours.length - 1 ? currentFillIndex + 1 : 0;
+    console.log(currentFillIndex);
   }
   if (key === "s") {
     strokeBox = !strokeBox;
