@@ -16,7 +16,7 @@ let colours = [
   "black",
   "gray",
   "dodgerBlue",
-  "greenyellow"
+  "greenyellow",
 ];
 
 function setup() {
@@ -31,8 +31,8 @@ function setup() {
 
 function draw() {
   background(220, 220, 200);
-  directionalLight(255,255,255, 100, 100, 100);
-ambientLight(255);
+  directionalLight(255, 255, 255, 100, 100, 100);
+  ambientLight(255);
   orbitControl();
   // normalMaterial();
   translate(0, 0, 500);
