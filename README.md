@@ -25,7 +25,7 @@ All links below go to individual projects, if you use the code say hi on [@alist
 [0012.0 - paperjs double pendulum synth](0012.0)  
 [0011.0 - p5js webcam with rotating coloured squares](0011.0)  
 [0010.0 - p5js better webcam line mirror with lerp](0010.0)  
-[0009.0 - p5js webcam line mirror](0009)  
+[0009.0 - p5js webcam line mirror](0009.0)  
 [0008.0 - p5js mediapipe handpose with variable typography](0008.0)  
 [0007.0 - p5js mediapipe handpose with variable typography](0007.0)  
 [0006.0 - p5js mediapipe handpose WEBGL 3D with webcam texture](0006.0)  
