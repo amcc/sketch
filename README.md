@@ -10,7 +10,8 @@ All links below go to individual projects, if you use the code say hi on [@alist
 
 ## Sketches
 
-[0025.1 - p5js orthographic 3D boxes with variants and rotation](0025.1)  
+[0027.0 - p5js orthographic perlin noise boxes](0027.0)  
+[0026.0 - p5js orthographic 3D boxes with variants and rotation](0026.0)  
 [0024.0 - p5js orthographic 3D boxes](0024.0)  
 [0023.2 - p5js flow fields (using q5 for speed)](0023.2)  
 [0022.0 - p5js flow fields (using q5 for speed)](0022.0)  
