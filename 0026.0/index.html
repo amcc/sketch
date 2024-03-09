@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Ortho</title>
+    <meta
+      name="description"
+      content="Ortho: artwork by Alistair McClymont, exploring 3D grids of orthographically displayed boxes."
+    />
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta
+      name="viewport"
+      content="user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width"
+    />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <script src="p5.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="utf-8" />
+    <script
+      defer
+      data-domain="lab.amcc.io/ortho"
+      src="https://plausible.io/js/script.js"
+    ></script>
+  </head>
+  <body>
+    <main>
+      <div id="canvas-parent">
+        <section class="text">
+          <h1>Ortho</h1>
+          <aside>
+            <div class="control-info">
+              <div>
+                <ul>
+                  <li>
+                    <button onClick="actionSelect('c')">
+                      <span class="control">c</span> colours
+                    </button>
+                  </li>
+                  <li>
+                    <button onClick="actionSelect('l')">
+                      <span class="control">l</span> lights
+                    </button>
+                  </li>
+                  <li>
+                    <button onClick="actionSelect('a')">
+                      <span class="control">a</span> alpha
+                    </button>
+                  </li>
+                  <li>
+                    <button onClick="actionSelect('o')">
+                      <span class="control">o</span> outline
+                    </button>
+                  </li>
+                  <li>
+                    <button onClick="actionSelect('s')">
+                      <span class="control">s / click</span> save
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <ul>
+                  <li>
+                    <button onClick="actionSelect('ArrowUp')">
+                      <span class="control">↑</span> rotate up
+                    </button>
+                  </li>
+                  <li>
+                    <button onClick="actionSelect('ArrowDown')">
+                      <span class="control">↓</span> rotate down
+                    </button>
+                  </li>
+                  <li>
+                    <button onClick="actionSelect('ArrowRight')">
+                      <span class="control">→</span> rotate right
+                    </button>
+                  </li>
+                  <li>
+                    <button onClick="actionSelect('ArrowLeft')">
+                      <span class="control">←</span> rotate left
+                    </button>
+                  </li>
+
+                  <li>
+                    <button onClick="actionSelect('Enter')">
+                      <span class="control">enter</span> reset
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <p class="information">
+                Ortho is a 3D grid of orthographically displayed boxes. It is an
+                experiment with code to create an infinitely variable
+                composition with form and colour.
+              </p>
+              <p class="information">
+                Use the controls to alter the artwork, each control has a
+                keyboard shortcut, on a mobile you can tap the buttons instead.
+              </p>
+              <p class="information">
+                By saving the artwork you download a completely unique image,
+                timestamped with a unique name.
+              </p>
+              <!-- <p>
+                On mobile you can click on the controls 
+              </p> -->
+              <p>
+                <a href="https://amcc.io">amcc.io</a> <br />
+                <a href="https://alistairmcclymont.com"
+                  >alistairmcclymont.com</a
+                >
+              </p>
+            </div>
+          </aside>
+        </section>
+      </div>
+    </main>
+    <script src="sketch.js"></script>
+  </body>
+</html>

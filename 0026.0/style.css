@@ -1,0 +1,98 @@
+:root {
+  --bg-col: rgb(240, 240, 211);
+  --bg-col-hover: rgb(220, 220, 200);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "IBM Plex Mono", sans-serif;
+  font-weight: 300;
+}
+canvas {
+  display: block;
+  max-width: calc(100vw - 1em);
+  max-height: calc(100vw - 1em);
+}
+
+main {
+  /* height: 100vh; */
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1,
+h2 {
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 1em;
+}
+
+ul {
+  list-style: none;
+  margin: 0 0 1em 0;
+  padding: 0;
+}
+li {
+  margin: 0;
+}
+
+#canvas-parent {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.control {
+  display: inline-block;
+  min-width: 4em;
+}
+.control-info {
+  display: block;
+  margin: 0 0 1em 0;
+}
+
+.control-info p {
+  margin: 0 0 1em 0;
+}
+
+.information {
+  max-width: 20em;
+}
+
+a {
+  color: black;
+}
+
+button {
+  text-align: left;
+  width: 12em;
+  margin: 2px;
+  padding: 1px 2px;
+  background-color: var(--bg-col);
+  /* background-color: yellow; */
+  border: 0px solid white;
+  border-radius: 3px;
+}
+button:hover {
+  background-color: cyan;
+}
+button:active {
+  background-color: yellow;
+}
+
+@media (min-width: 320px) {
+  .control-info {
+    display: flex;
+    /* justify-content: space-between; */
+  }
+
+  /* .control-info p {
+    margin: 0;
+  } */
+}
