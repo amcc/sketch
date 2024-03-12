@@ -10,7 +10,7 @@ All links below go to individual projects, if you use the code say hi on [@alist
 
 ## Sketches
 
-[0028.0 - threejs orthographic simplex noise boxes](0028.0)
+[0028.5 - threejs orthographic simplex noise boxes](0028.5/dist)
 [0027.0 - p5js orthographic perlin noise boxes](0027.0)  
 [0026.0 - p5js orthographic 3D boxes with variants and rotation](0026.0)  
 [0024.0 - p5js orthographic 3D boxes](0024.0)  
