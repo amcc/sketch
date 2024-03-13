@@ -5,9 +5,14 @@ import { keylistener } from "./components/keyboardInput";
 import { lerp } from "./components/utils";
 
 import Stats from "three/examples/jsm/libs/stats.module";
-var stats = new Stats();
-stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
-document.body.appendChild(stats.dom);
+
+const showStats = false;
+
+if (showStats) {
+  var stats = new Stats();
+  stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
+  document.body.appendChild(stats.dom);
+}
 
 const noise3D = createNoise3D();
 
@@ -196,7 +201,7 @@ for (let x = 0; x < xGridSize; x++) {
 }
 
 function animate() {
-  stats.begin();
+  if (showStats) stats.begin();
   requestAnimationFrame(animate);
 
   //rotate parent
@@ -233,7 +238,7 @@ function animate() {
 
   // render it out 60 times a second
   renderer.render(scene, camera);
-  stats.end();
+  if (showStats) stats.end();
 }
 animate();
 
