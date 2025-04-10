@@ -6,7 +6,7 @@ A collection of daily sketches. Often using the p5js framework. A collection of 
 
 Feel free to use and share the code, the repo is here: [https://github.com/amcc/sketch](https://github.com/amcc/sketch)
 
-All links below go to individual projects, if you use the code say hi on [@alistairmcclymont on Instagram](https://www.instagram.com/alistairmcclymont), [@alistairmcclymont on Threads](https://www.threads.net/@alistairmcclymont), [@mcclymont on Twitter / X](https://twitter.com/mcclymont), or via my website at https://amcc.io
+All links below go to individual projects, if you use the code say hi on [@alistairmcclymont on Instagram](https://www.instagram.com/alistairmcclymont) (art), [@amccdotio on Instagram](https://www.instagram.com/amccdotio) (code), [@alistairmcclymont on Threads](https://www.threads.net/@alistairmcclymont), [@mcclymont on Twitter / X](https://twitter.com/mcclymont), or via my website at https://amcc.io
 
 ## Sketches
 
