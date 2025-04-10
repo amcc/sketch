@@ -10,6 +10,7 @@ All links below go to individual projects, if you use the code say hi on [@alist
 
 ## Sketches
 
+[0031.0 - blocky landscape using p5js simplex](0031.0)  
 [0030.0 - p5js simplex noise](0030.0)  
 [0028.6 - threejs orthographic simplex noise boxes](https://0028-6.netlify.app/)  
 [0027.0 - p5js orthographic perlin noise boxes](0027.0)  
