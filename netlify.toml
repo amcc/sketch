@@ -1,0 +1,6 @@
+
+# Configuration for 0031.2
+[build]
+  base = "0031.2"
+  publish = "0031.2/dist"
+  command = "npm run build"
