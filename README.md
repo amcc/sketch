@@ -10,7 +10,7 @@ All links below go to individual projects, if you use the code say hi on [@alist
 
 ## Sketches
 
-[0031.2 - threejs blocky simplex landscape - instancedMesh](0031.2)  
+[0031.2 - threejs blocky simplex landscape - instancedMesh](https://amcc-boxes-bloom.netlify.app/)  
 [0031.1 - threejs blocky simplex landscape](0031.1)  
 [0031.0 - blocky landscape using p5js simplex](0031.0)  
 [0030.0 - p5js simplex noise](0030.0)  
