@@ -1,18 +1,25 @@
 import * as THREE from "three";
+
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
+
 import Stats from "three/addons/libs/stats.module.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { createNoise3D } from "simplex-noise";
 
 // variables
-let gridX = 100;
-let gridY = 100;
-let boxSize = 0.1;
+let gridX = 40;
+let gridY = 40;
+let boxSize = 1;
 let boxHeightMax = 26;
-let noiseOff = 6;
-let inc = 0.004;
+let noiseOff = boxSize * 0.4;
+let travelSpeed = 0.3;
+// let inc = 0.004;
 let offset = 0;
 let frameCount = 0;
 const alpha = 255;
+const camDist = 100;
 
 //not used in this sketch, but see the last function to see how it could be used
 const colours = [
@@ -41,11 +48,32 @@ const camera = new THREE.PerspectiveCamera(
 
 camera.position.set(0, -14, 0);
 
+// Add ambient light
+const ambientLight = new THREE.AmbientLight(0xffffff, 10); // Color and intensity
+// scene.add(ambientLight);
+
+// Create a geometry and material for the box
+const boxGeometry = new THREE.BoxGeometry(10, 10, 10);
+const boxMaterial = new THREE.MeshStandardMaterial({ color: 0xffff00 });
+const boxMesh = new THREE.Mesh(boxGeometry, boxMaterial);
+scene.add(boxMesh);
+
+// Add directional light
+const directionalLight = new THREE.DirectionalLight(0xffffff, 5); // Color and intensity
+directionalLight.position.set(3, 30, 30); // Position the light
+scene.add(directionalLight);
+
+// Position the box at the position of the directional light
+boxMesh.position.copy(directionalLight.position);
+
 // store the boxes
 const boxes = [];
 const geometry = new THREE.BoxGeometry(boxSize, boxSize, boxSize);
-const material = new THREE.MeshBasicMaterial({
+const material = new THREE.MeshStandardMaterial({
   color: new THREE.Color().setRGB(0.5, 0.5, 0.5),
+  emissive: 0x333300,
+  metalness: 0.1, // Low metalness for a non-metallic look
+  roughness: 0.4, // Medium roughness for a slightly shiny surface
 });
 const instancedMesh = new THREE.InstancedMesh(
   geometry,
@@ -121,7 +149,9 @@ document.body.appendChild(renderer.domElement);
 // const cube = new THREE.Mesh(geometry, material);
 // scene.add(cube);
 
-camera.position.z = 5;
+camera.position.z = camDist;
+camera.position.y = -camDist;
+scene.rotation.z = -Math.PI / 4;
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
@@ -129,12 +159,22 @@ controls.target.set(0, 0, 0);
 controls.update();
 const clock = new THREE.Clock();
 
+// Set up post-processing
+const composer = new EffectComposer(renderer);
+const renderPass = new RenderPass(scene, camera);
+composer.addPass(renderPass);
+
+const bloomPass = new UnrealBloomPass(new THREE.Vector2(1, 1), 1.5, 0.4, 0.85);
+composer.addPass(bloomPass);
+
 function animate() {
-  // const ms = Math.floor(clock.getDelta() * 1000);
-  let f = Math.floor(frameCount / 4);
+  scene.rotation.z += 0.001;
+  const t = Math.floor(clock.getElapsedTime() * 100 * travelSpeed);
+  let f = Math.floor(frameCount / 5);
+  // console.log(f, ms);
   // animate
   let i = 0;
-  for (let y = f; y < gridY + f; y++) {
+  for (let y = t; y < gridY + t; y++) {
     for (let x = 0; x < gridX; x++) {
       for (let z = 0; z < boxHeightMax; z++) {
         let negX = (boxSize * (gridX - 1)) / 2;
@@ -165,11 +205,12 @@ function animate() {
       }
     }
   }
-  offset += inc;
+  // offset += inc;
   frameCount++;
   controls.update();
   instancedMesh.instanceMatrix.needsUpdate = true;
-  renderer.render(scene, camera);
+  // renderer.render(scene, camera);
+  composer.render();
   stats.update();
 }
 renderer.setAnimationLoop(animate);
