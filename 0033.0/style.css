@@ -1,0 +1,25 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  cursor: none;
+}
+canvas {
+  display: block;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+  overflow: hidden;
+  position: relative;
+}
+
+#framerate {
+  position: absolute;
+  padding: 5px;
+  color: white;
+}

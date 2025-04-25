@@ -10,6 +10,7 @@ All links below go to individual projects, if you use the code say hi on [@alist
 
 ## Sketches
 
+[0033.0 - noisy moving text](0033.0)  
 [0031.2 - threejs blocky simplex landscape - instancedMesh](https://amcc-boxes-bloom.netlify.app/)  
 [0031.1 - threejs blocky simplex landscape](0031.1)  
 [0031.0 - blocky landscape using p5js simplex](0031.0)  
