@@ -24,7 +24,7 @@ main {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: black;
+  background-color: white;
   overflow: hidden;
   position: relative;
 }
