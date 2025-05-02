@@ -1,0 +1,28 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  font-family: "Courier New", Courier, monospace;
+}
+canvas {
+  display: block;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 70vh;
+  background-color: #fff;
+  overflow: hidden;
+  position: relative;
+  gap: 50px;
+}
+
+#framerate {
+  position: absolute;
+  padding: 5px;
+  color: black;
+}
