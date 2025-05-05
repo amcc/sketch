@@ -1,37 +1,33 @@
+// desired size of image area when creating the graphics to analyse images
 let w = 450;
 let h = 450;
 
 let loaded = false; // use this to prevent drawing while making arrays
-const gridArrays = [];
-const visibleGridArrays = [];
-let currentGrid = 0;
-const gridSize = 45;
-const noiseLevel = 0.04;
-const diameter = 2;
-const marginPercentage = 0;
-const accellerationInc = 0.1;
-const accellerationMin = 0.4;
-let offset = 0;
 
-// set up input elements
+// grid variables
+const gridArrays = []; // store the original images in grids
+const visibleGridArrays = []; // store the images to draw onto the canvas
+let currentGrid = 0; // increment through the images
+const gridSize = 45; // size of grid to slice images
+
+// set up input elements in the HTML for use in JS
 let squareSizeRange = document.getElementById("square-margin");
 let gridTicker = document.getElementById("grid-tick");
 
-// colours
-const showGreen = [26, 235, 37];
+// look and feel
+const noiseLevel = 0.14; // create noise in order to animate points in an interesting way
+let offset = 0; // allow the noise on each image to be different - we increment this when sampling images
+const marginPercentage = 0; // create a margin around the grid when sampling the images
+const accellerationInc = 0.1; // acceleration of the points
+const showGreen = [26, 235, 37]; // color of the points
+const fadeRate = 1; // how quickly the points fade in
 
-// make text
-let pg; // store text graphics
-const tSize = 100;
-const textAlpha = 180;
-const customFont = "Archivo Black";
-
-// images
+// images to be loaded in preload
 const numberOfImages = 45;
 const images = [];
 
-// info
-let fpsText;
+// info for frame rate
+let fpsText = document.getElementById("framerate");
 
 function preload() {
   for (let i = 1; i < numberOfImages; i++) {
@@ -40,7 +36,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(w * 2, h);
+  createCanvas(w, h);
   // createGrid(width, height);
 
   // look / feel
@@ -49,11 +45,8 @@ function setup() {
   // make and analyse text
   createGridsFromImages(w, h);
 
-  // info (uncomment to use)
-  fpsText = document.getElementById("framerate");
-
   // limit the frame rate
-  frameRate(25);
+  // frameRate(25);
 }
 
 function draw() {
@@ -86,8 +79,7 @@ function drawPoints() {
     gridItem.forEach((p, index) => {
       if (!p.fade) p.fade = 0;
       fill(...p.color, p.fade);
-      p.fade += 5;
-      if (p.fade > 255) p.fade = 255;
+      if (p.fade < 255) p.fade += fadeRate;
 
       // select the size of the margin around the square from the range input
       let sMargin = Number(squareSizeRange.value);
@@ -130,12 +122,11 @@ function createGridsFromImages(w, h) {
 
   // make all text arrays
   images.forEach((img) => {
-    pg = createGraphics(w, h);
+    const pg = createGraphics(w, h);
     // input canvas
     pg.background(0);
     pg.fill(255);
     pg.image(img, 0, 0, w, h);
-    // image(pg, 0, 0);
 
     const gridArray = [];
     for (let y = 0; y < gridSize; y++) {
@@ -169,7 +160,9 @@ function createGridsFromImages(w, h) {
 }
 
 function mousePressed() {
+  // make a new copy of the grid array at the currentGrid index
   let newGridOfPoints = JSON.parse(JSON.stringify(gridArrays[currentGrid]));
+  // add this copy to the visibleGridArrays
   visibleGridArrays.push(newGridOfPoints);
 
   currentGrid++;
@@ -177,8 +170,4 @@ function mousePressed() {
 }
 function fps() {
   fpsText.innerHTML = frameRate().toFixed();
-}
-
-function fontLoaded() {
-  fontLoaded = true;
 }
