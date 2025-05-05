@@ -17,10 +17,26 @@
       <div id="framerate">framerate</div>
       <p>2025 web identity - click to see 45s</p>
       <div class="control">
-        <label for="num">Square margin</label>
-        <input type="range" id="square-margin" value="0" min="1" max="4" />
+        <div class="input-group">
+          <label for="num">Grid Size: <span id="grid-value">45</span></label>
+          <input type="range" id="grid-size" value="45" min="2" max="100" />
+        </div>
+        <div class="input-group">
+          <label for="num"
+            >Square margin: <span id="margin-value">0</span></label
+          >
+          <input type="range" id="square-margin" value="0" min="1" max="4" />
+        </div>
+
+        <div class="input-group">
+          <label for="num"
+            >Grid thickness: <span id="grid-thickness-value">0</span></label
+          >
+          <input type="range" id="grid-thickness" value="0" min="0" max="100" />
+        </div>
+
         <!--  tickbox -->
-        <label for="tickbox">Grid</label>
+        <label for="tickbox">Grid Green</label>
         <input type="checkbox" id="grid-tick" />
       </div>
       <div id="canvas-container"></div>

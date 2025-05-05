@@ -1,3 +1,28 @@
+// set up input elements in the HTML for use in JS
+const squareSizeRange = document.getElementById("square-margin");
+const marginValue = document.getElementById("margin-value");
+const gridThicknessRange = document.getElementById("grid-thickness");
+const gridThicknessValue = document.getElementById("grid-thickness-value");
+const gridTicker = document.getElementById("grid-tick");
+const gridValue = document.getElementById("grid-value");
+const gridSizeRange = document.getElementById("grid-size");
+
+// range event listeners
+squareSizeRange.addEventListener("input", (e) => {
+  marginValue.innerHTML = e.target.value;
+});
+gridThicknessRange.addEventListener("input", (e) => {
+  gridThicknessValue.innerHTML = e.target.value;
+});
+gridTicker.addEventListener("input", (e) => {
+  gridTicker.checked = e.target.checked;
+});
+gridSizeRange.addEventListener("input", (e) => {
+  gridValue.innerHTML = e.target.value;
+  gridSize = Number(e.target.value);
+  createGridsFromImages(w, h);
+});
+
 // desired size of image area when creating the graphics to analyse images
 const w = 450;
 const h = 450;
@@ -13,17 +38,13 @@ let loaded = false; // use this to prevent drawing while making arrays
 const gridArrays = []; // store the original images in grids
 const visibleGridArrays = []; // store the images to draw onto the canvas
 let currentGrid = 0; // increment through the images
-const gridSize = 45; // size of grid to slice images
-
-// set up input elements in the HTML for use in JS
-let squareSizeRange = document.getElementById("square-margin");
-let gridTicker = document.getElementById("grid-tick");
+let gridSize = Number(gridSizeRange.value); // size of grid to slice imagesc
 
 // look and feel
 const noiseLevel = 0.04; // create noise in order to animate points in an interesting way
 let offset = 0; // allow the noise on each image to be different - we increment this when sampling images
 const marginPercentage = 0; // create a margin around the grid when sampling the images
-const accellerationInc = 0.01; // acceleration of the points
+const accellerationInc = 0.03; // acceleration of the points
 const showGreen = [26, 235, 37]; // color of the points
 const fadeRate = 1; // how quickly the points fade in
 
@@ -52,7 +73,7 @@ function setup() {
   createGridsFromImages(w, h);
 
   // limit the frame rate
-  // frameRate(25);
+  frameRate(30);
 }
 
 function draw() {
@@ -61,13 +82,15 @@ function draw() {
 
   background(255);
   if (loaded) drawPoints();
-  if (gridTicker.checked) drawGridLines();
+  drawGridLines();
 }
 
 // make grid lines (shown using checkbox)
 function drawGridLines() {
-  stroke(showGreen);
-  strokeWeight(1);
+  const gridThickness = Number(gridThicknessRange.value);
+  const strokeColor = gridTicker.checked ? showGreen : 255;
+  stroke(strokeColor);
+  strokeWeight(gridThickness);
   const inc = h / gridSize;
   for (let i = 0; i < h; i++) {
     line(0, i * inc, width, i * inc);
@@ -121,6 +144,10 @@ function drawPoints() {
 }
 
 function createGridsFromImages(w, h) {
+  // reset the arrays
+  visibleGridArrays.length = 0;
+  gridArrays.length = 0;
+
   const incX = w / gridSize;
   const incY = h / gridSize;
   const marginX = incX * marginPercentage;
