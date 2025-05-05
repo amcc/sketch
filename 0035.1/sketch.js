@@ -1,6 +1,11 @@
 // desired size of image area when creating the graphics to analyse images
-let w = 450;
-let h = 450;
+const w = 450;
+const h = 450;
+
+// canvas variables
+let gridCanvas; // store canvas variable
+const canvasContainer = document.getElementById("canvas-container");
+canvasContainer.addEventListener("click", (e) => clickedTheCanvas(e));
 
 let loaded = false; // use this to prevent drawing while making arrays
 
@@ -15,10 +20,10 @@ let squareSizeRange = document.getElementById("square-margin");
 let gridTicker = document.getElementById("grid-tick");
 
 // look and feel
-const noiseLevel = 0.14; // create noise in order to animate points in an interesting way
+const noiseLevel = 0.04; // create noise in order to animate points in an interesting way
 let offset = 0; // allow the noise on each image to be different - we increment this when sampling images
 const marginPercentage = 0; // create a margin around the grid when sampling the images
-const accellerationInc = 0.1; // acceleration of the points
+const accellerationInc = 0.01; // acceleration of the points
 const showGreen = [26, 235, 37]; // color of the points
 const fadeRate = 1; // how quickly the points fade in
 
@@ -36,7 +41,8 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(w, h);
+  gridCanvas = createCanvas(w * 3, h);
+  gridCanvas.parent("canvas-container");
   // createGrid(width, height);
 
   // look / feel
@@ -80,7 +86,7 @@ function drawPoints() {
       if (!p.fade) p.fade = 0;
       fill(...p.color, p.fade);
       if (p.fade < 255) p.fade += fadeRate;
-
+      noStroke();
       // select the size of the margin around the square from the range input
       let sMargin = Number(squareSizeRange.value);
       let size = w / gridSize - sMargin * 2;
@@ -159,7 +165,7 @@ function createGridsFromImages(w, h) {
   loaded = true;
 }
 
-function mousePressed() {
+function clickedTheCanvas(e) {
   // make a new copy of the grid array at the currentGrid index
   let newGridOfPoints = JSON.parse(JSON.stringify(gridArrays[currentGrid]));
   // add this copy to the visibleGridArrays
@@ -168,6 +174,7 @@ function mousePressed() {
   currentGrid++;
   if (currentGrid > gridArrays.length - 1) currentGrid = 0;
 }
+
 function fps() {
   fpsText.innerHTML = frameRate().toFixed();
 }

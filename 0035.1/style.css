@@ -2,13 +2,16 @@ html,
 body {
   margin: 0;
   padding: 0;
-  cursor: pointer;
   font-family: "Courier New", Courier, monospace;
 }
 canvas {
   display: block;
   /* width: 100% !important;
   height: auto !important; */
+}
+
+#canvas-container {
+  cursor: pointer;
 }
 
 main {
