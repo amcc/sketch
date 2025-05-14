@@ -173,7 +173,7 @@ function createGridsFromImages(w, h) {
         let pointInfo = {
           x: x * incX + marginX,
           y: y * incY + marginY,
-          n: noiseVal,
+          n: 1,
           b: b,
           text: text,
           c: c,

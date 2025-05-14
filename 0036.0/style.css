@@ -1,0 +1,17 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  display: block;
+  touch-action: none;
+  cursor: pointer;
+}
+
+main{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100svh;
+}
