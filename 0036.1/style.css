@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
@@ -8,10 +9,21 @@ canvas {
   cursor: pointer;
 }
 
-main{
+main {
   display: flex;
-  align-items:center;
+  align-items: center;
   justify-content: center;
   min-height: 100vh;
   min-height: 100svh;
+}
+h1 {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  color: white;
+  pointer-events: none;
+  z-index: 10;
+  font-family: system-ui;
+  font-weight: 300;
+  font-size: 1em;
 }

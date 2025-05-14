@@ -2,7 +2,8 @@ let points = [];
 let numPoints = 200;
 let sw = 2;
 let alpha = 255;
-let colour = [60, 60, 240];
+// let colour = [60, 60, 240];
+let colour = [240, 86, 59];
 let grid = 100;
 let length;
 let lengthScale = 6;
@@ -13,28 +14,32 @@ let cSize;
 // noisy stuff
 let offset = 0;
 let people = [];
-const travellerSpeed = 0.001;
+const travellerSpeed = 0.002;
 
 function setup() {
+  colorMode(HSB);
   cSize = min(windowWidth, windowHeight);
   length = (cSize * lengthScale) / numPoints;
   createCanvas(windowWidth, windowHeight);
 
+  // for (let i = 0; i < 600; i++) {
+  //   addArrow(random(width), random(height));
+  // }
   addArrow();
 
   // make people
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 10; i++) {
     people.push({
       x: random(width),
       y: random(height),
       offset: random(10000),
-      colour: [random(255), random(255), random(255)],
+      colour: [random(360), 50, 100],
     });
   }
 }
 
 function draw() {
-  background(255);
+  background(255, 0, 10);
   // translate(100,100)
   // triangle(length, -100, length+100, 0, length, -100)
 
@@ -49,7 +54,6 @@ function draw() {
         // accumulator.distance = distance;
         // accumulator.index = index;
         if (index < array.length && distance < accumulator.distance) {
-          console.log(accumulator.distance, distance);
           accumulator.index = index;
           accumulator.distance = distance;
           return accumulator;
@@ -64,8 +68,6 @@ function draw() {
       }
     );
 
-    console.log(min);
-
     lookAtMe(points[i], people[min.index], length);
   }
 
@@ -79,7 +81,7 @@ function draw() {
   // }
 
   noFill();
-  strokeWeight(sw);
+  strokeWeight(sw * 3);
   stroke(colour);
 
   // perlin movement
@@ -89,8 +91,11 @@ function draw() {
     person.y = travel.y;
     person.offset = travel.off;
     stroke(person.colour);
+    noFill();
+    // fill(255, 0, 100);
+    circle(person.x, person.y, width / 50);
     fill(person.colour);
-    circle(person.x, person.y, width / 20);
+    circle(person.x, person.y, 2);
   });
 }
 
@@ -134,20 +139,20 @@ function lookAtMe(point, person, length) {
 }
 
 function mouseDragged() {
-  if (frameCount % 3 === 0) addArrow();
+  if (frameCount % 3 === 0) addArrow(mouseX, mouseY);
 }
 function mousePressed() {
-  addArrow();
+  addArrow(mouseX, mouseY);
 }
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
 
-function addArrow() {
+function addArrow(x = width / 2, y = height / 2) {
   points.push({
-    x: mouseX || width / 2,
-    y: mouseY || height / 2,
+    x: x,
+    y: y,
     r: random(TWO_PI),
     l: randomLerpRate(),
   });
