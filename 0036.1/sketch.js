@@ -1,26 +1,9 @@
-const firebaseConfig = {
-  apiKey: "AIzaSyBhMpbJE1PlhB9C5G8WECDwH_IYyEnChpU",
-  authDomain: "point-at-me.firebaseapp.com",
-  databaseURL:
-    "https://point-at-me-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "point-at-me",
-  storageBucket: "point-at-me.firebasestorage.app",
-  messagingSenderId: "820861130342",
-  appId: "1:820861130342:web:048264a8980454e1d47fa7",
-};
-
-// Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
-
-// Get a reference to the Realtime Database service
-const database = firebase.database();
-
 let points = [];
 let numPoints = 200;
 let sw = 2;
 let alpha = 255;
-// let colour = [60, 60, 240];
-let colour = [240, 86, 59];
+let colour = [60, 60, 240];
+// let colour = [240, 86, 59];
 let grid = 100;
 let length;
 let lengthScale = 6;
@@ -36,7 +19,7 @@ const travellerSpeed = 0.002;
 // console.log(app);
 
 function setup() {
-  colorMode(HSB);
+  // colorMode(HSB);
   cSize = min(windowWidth, windowHeight);
   length = (cSize * lengthScale) / numPoints;
   createCanvas(windowWidth, windowHeight);
@@ -47,48 +30,19 @@ function setup() {
   addArrow();
 
   // make people
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 5; i++) {
     people.push({
       x: random(width),
       y: random(height),
       offset: random(10000),
       colour: [random(360), 50, 100],
     });
-
-    pushValueToFirebase("people", {
-      x: people[i].x,
-      y: people[i].y,
-      offset: people[i].offset,
-      colour: people[i].colour,
-      timestamp: firebase.database.ServerValue.TIMESTAMP, // Get the server time!
-    });
-
-    // database
-    //   .ref("pointatme/people")
-    //   .push({
-    //     x: people[i].x,
-    //     y: people[i].y,
-    //     offset: people[i].offset,
-    //     colour: people[i].colour,
-    //     timestamp: firebase.database.ServerValue.TIMESTAMP, // Get the server time!
-    //   })
-    //   .then(() => {
-    //     console.log("Data saved successfully.");
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error saving data:", error);
-    //   });
   }
-
-  // database.ref('myApp/people').push({
-  //   x: mouseX,
-  //   y: mouseY,
-  //   timestamp: firebase.database.ServerValue.TIMESTAMP // Get the server time!
-  // });
 }
 
 function draw() {
-  background(255, 0, 10);
+  // background(255, 0, 10);
+  background(255);
   // translate(100,100)
   // triangle(length, -100, length+100, 0, length, -100)
 
@@ -139,11 +93,12 @@ function draw() {
     person.x = travel.x;
     person.y = travel.y;
     person.offset = travel.off;
-    stroke(person.colour);
+    // stroke(person.colour);
+    stroke(colour);
     noFill();
     // fill(255, 0, 100);
     circle(person.x, person.y, width / 50);
-    fill(person.colour);
+    // fill(person.colour);
     circle(person.x, person.y, 2);
   });
 
@@ -157,8 +112,8 @@ function lookAtMe(point, person, length) {
   let r = point.r;
   push();
 
-  // stroke(colour);
-  stroke(person.colour);
+  stroke(colour);
+  // stroke(person.colour);
   strokeWeight(sw);
   strokeCap(ROUND);
   translate(x, y);
@@ -222,53 +177,4 @@ function traveller(offset) {
   let y = noise(offset + 100) * height * 2 - height / 2;
   let off = (offset += travellerSpeed);
   return { x, y, off };
-}
-
-// function setup() {
-//   createCanvas(400, 400);
-//   background(220);
-
-//   // Save a value to Firebase
-//   saveValueToFirebase('examplePath', { x: 100, y: 200 });
-
-//   // Retrieve a value from Firebase
-//   retrieveValueFromFirebase('examplePath');
-// }
-
-// Function to save a value to Firebase
-function saveValueToFirebase(path, value) {
-  var database = firebase.database();
-  database.ref(path).set(value, function (error) {
-    if (error) {
-      console.error("Error saving data:", error);
-    } else {
-      console.log("Data saved successfully!");
-    }
-  });
-}
-
-function pushValueToFirebase(path, value) {
-  var database = firebase.database();
-  database.ref(path).push(value, function (error) {
-    if (error) {
-      console.error("Error saving data:", error);
-    } else {
-      console.log("Data saved successfully!");
-    }
-  });
-}
-
-// Function to retrieve a value from Firebase
-function retrieveValueFromFirebase(path, callback) {
-  var database = firebase.database();
-  database
-    .ref(path)
-    .once("value")
-    .then(function (snapshot) {
-      var data = snapshot.val();
-      callback(data);
-    })
-    .catch(function (error) {
-      console.error("Error retrieving data:", error);
-    });
 }

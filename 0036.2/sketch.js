@@ -36,7 +36,7 @@ const travellerSpeed = 0.002;
 // console.log(app);
 
 function setup() {
-  colorMode(HSB);
+  // colorMode(HSB);
   cSize = min(windowWidth, windowHeight);
   length = (cSize * lengthScale) / numPoints;
   createCanvas(windowWidth, windowHeight);
@@ -134,6 +134,11 @@ function draw() {
   stroke(colour);
 
   // perlin movement
+  const peopleCallback = (data) => {
+    const firePeople = Object.keys(data).map((key) => data[key]);
+    people = firePeople;
+  };
+
   people.forEach((person) => {
     const travel = traveller(person.offset);
     person.x = travel.x;
@@ -147,7 +152,11 @@ function draw() {
     circle(person.x, person.y, 2);
   });
 
-  // let dPeople = retrieveValueFromFirebase("people");
+  const testFunction = (data) => {
+    console.log("Data retrieved:", data);
+  };
+
+  retrieveValueFromFirebase("people", peopleCallback);
   // console.log(dPeople);
 }
 

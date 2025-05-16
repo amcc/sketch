@@ -10,6 +10,8 @@ All links below go to individual projects, if you use the code say hi on [@alist
 
 ## Sketches
 
+[0036.1 - point at them](0036.1)  
+[0036.0 - point at me](0036.0)  
 [0035.1 - waterfall 45s](0035.1)  
 [0034.0 - cloud towers](0034.0)  
 [0033.0 - noisy moving text](0033.0)  
