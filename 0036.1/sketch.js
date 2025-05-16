@@ -84,7 +84,7 @@ function draw() {
   // }
 
   noFill();
-  strokeWeight(sw * 3);
+  strokeWeight(sw * 1);
   stroke(colour);
 
   // perlin movement
