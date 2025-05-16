@@ -30,7 +30,7 @@ function setup() {
   addArrow();
 
   // make people
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 5; i++) {
     people.push({
       x: random(width),
       y: random(height),
