@@ -2,8 +2,13 @@ let points = [];
 let numPoints = 200;
 let sw = 2;
 let alpha = 255;
+<<<<<<< HEAD
 let colour = [60, 60, 240];
 // let colour = [240, 86, 59];
+=======
+// let colour = [60, 60, 240];
+let colour = [240, 86, 59];
+>>>>>>> 7f6d4cf86dad02330adba5eb985d8b18faeca3d0
 let grid = 100;
 let length;
 let lengthScale = 6;
@@ -15,11 +20,17 @@ let cSize;
 let offset = 0;
 let people = [];
 const travellerSpeed = 0.002;
+<<<<<<< HEAD
 
 // console.log(app);
 
 function setup() {
   // colorMode(HSB);
+=======
+
+function setup() {
+  colorMode(HSB);
+>>>>>>> 7f6d4cf86dad02330adba5eb985d8b18faeca3d0
   cSize = min(windowWidth, windowHeight);
   length = (cSize * lengthScale) / numPoints;
   createCanvas(windowWidth, windowHeight);
@@ -30,7 +41,7 @@ function setup() {
   addArrow();
 
   // make people
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 10; i++) {
     people.push({
       x: random(width),
       y: random(height),
@@ -41,8 +52,12 @@ function setup() {
 }
 
 function draw() {
+<<<<<<< HEAD
   // background(255, 0, 10);
   background(255);
+=======
+  background(255, 0, 10);
+>>>>>>> 7f6d4cf86dad02330adba5eb985d8b18faeca3d0
   // translate(100,100)
   // triangle(length, -100, length+100, 0, length, -100)
 
@@ -93,12 +108,20 @@ function draw() {
     person.x = travel.x;
     person.y = travel.y;
     person.offset = travel.off;
+<<<<<<< HEAD
     // stroke(person.colour);
     stroke(colour);
     noFill();
     // fill(255, 0, 100);
     circle(person.x, person.y, width / 50);
     // fill(person.colour);
+=======
+    stroke(person.colour);
+    noFill();
+    // fill(255, 0, 100);
+    circle(person.x, person.y, width / 50);
+    fill(person.colour);
+>>>>>>> 7f6d4cf86dad02330adba5eb985d8b18faeca3d0
     circle(person.x, person.y, 2);
   });
 

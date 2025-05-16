@@ -1,14 +1,3 @@
-const firebaseConfig = {
-  apiKey: "AIzaSyBhMpbJE1PlhB9C5G8WECDwH_IYyEnChpU",
-  authDomain: "point-at-me.firebaseapp.com",
-  databaseURL:
-    "https://point-at-me-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "point-at-me",
-  storageBucket: "point-at-me.firebasestorage.app",
-  messagingSenderId: "820861130342",
-  appId: "1:820861130342:web:048264a8980454e1d47fa7",
-};
-
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
 
