@@ -32,7 +32,11 @@ const createPoseLandmarker = async () => {
 createPoseLandmarker();
 
 window.predictWebcam = async (video) => {
-  
+  if (!handLandmarker) {
+    window.requestAnimationFrame(() => predictWebcam(video));
+    return;
+  }
+
   // Now let's start detecting the stream.
   let startTimeMs = performance.now();
 
